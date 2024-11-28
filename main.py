@@ -88,3 +88,6 @@ class Staff(Person):
 
 daniel = Member("Daniel", 16, "023754723057", "AKJSD346", "Football")
 john = Member("John", 20, "8327618", "UGGF42356", "Basketball")
+parthiv = Coach("Parthiv", 17, "283748034", "DAHFG3845", "Football", 100000)
+ali = Coach("Ali", 17, "283423478", "KASDH219834", "Basketball", 10000)
+junaid = Staff("Junaid", 17, "234765405", "SDJFH23984", )
