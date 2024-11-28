@@ -42,7 +42,8 @@ class Coach(Person):
         self.specialisation = specialisation
         self.salary = salary
         self.mentees = []
-    
+        self.mentorshipGroup = []
+
     def setCoachDetails(self, coachID, specialisation, salary):
         self.coachID = coachID
         self.specialisation = specialisation
@@ -50,8 +51,8 @@ class Coach(Person):
         self.mentees = []
     
     def assignMentee(self, member): 
-        self.mentees.append(member.name)
-        print(f"Coach {self.name} is now mentoring {member.name} in {self.specialisation}")
+        self.mentees.append(f"{member.name} ({member.sport})")
+        print(f"Coach {self.name} is now mentoring {member.name} in {member.sport}")
     
     def getMentees(self): 
         print(self.mentees)
@@ -59,6 +60,13 @@ class Coach(Person):
     def increaseSalary(self, percentage): 
         self.salary *= float(1 + percentage/100)
         self.salary = round(self.salary, 2)
+
+    def mentorCoach(self, coach): 
+        self.mentorshipGroup.append(f"{coach.name} ({coach.specialisation})")
+        print(f"Coach {self.name} is now mentoring Coach {coach.name} in {coach.specialisation}")
+    
+    def getMentorshipGroup(self): 
+        print(self.mentorshipGroup)
     
     def getCoachSum(self): 
         print(f"Name: {self.name}, Age: {self.age}, Contact Number: {self.contactNumber}")
@@ -80,7 +88,7 @@ class Staff(Person):
         self.yearsOfService += 1
     
     def assistMember(self, member): 
-        print(f"Staff {self.name} assissted {member.name} in resolving an issue. ")
+        print(f"Staff {self.name} assisted {member.name} in resolving an issue. ")
 
     def getStaffSum(self): 
         print(f"Name: {self.name}, Age: {self.age}, Contact Number: {self.contactNumber}")
@@ -90,4 +98,26 @@ daniel = Member("Daniel", 16, "023754723057", "AKJSD346", "Football")
 john = Member("John", 20, "8327618", "UGGF42356", "Basketball")
 parthiv = Coach("Parthiv", 17, "283748034", "DAHFG3845", "Football", 100000)
 ali = Coach("Ali", 17, "283423478", "KASDH219834", "Basketball", 10000)
-junaid = Staff("Junaid", 17, "234765405", "SDJFH23984", )
+junaid = Staff("Junaid", 17, "234765405", "SDJFH23984", "Teacher", 5)
+
+parthiv.assignMentee(daniel)
+john.addPerformanceScore(10)
+john.addPerformanceScore(10)
+john.addPerformanceScore(5)
+john.addPerformanceScore(5)
+john.addPerformanceScore(20)
+john.calculateAverageScore()
+junaid.assistMember(daniel)
+ali.increaseSalary(15)
+junaid.incrementYearsOfService()
+daniel.getMemberSum()
+john.getMemberSum()
+parthiv.getCoachSum()
+ali.getCoachSum()
+junaid.getStaffSum()
+
+parthiv.mentorCoach(ali)
+parthiv.assignMentee(daniel)
+
+parthiv.getMentorshipGroup()
+parthiv.getMentees()
